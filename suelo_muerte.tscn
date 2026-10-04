@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://df8vxi3ooupe"]
+
+[ext_resource type="Texture2D" uid="uid://c7phvgwwem6lq" path="res://SueloMuerte/Explosion_1.png" id="1_b8bj1"]
+[ext_resource type="Texture2D" uid="uid://dth52hediijkq" path="res://SueloMuerte/Explosion_2.png" id="2_85wst"]
+[ext_resource type="Texture2D" uid="uid://dn4ke0xuiwo1k" path="res://SueloMuerte/Explosion_3.png" id="3_k3wyg"]
+[ext_resource type="Texture2D" uid="uid://dkiauxnomymrn" path="res://SueloMuerte/Explosion_4.png" id="4_rac6j"]
+[ext_resource type="Texture2D" uid="uid://bb6kh5wka7yv6" path="res://SueloMuerte/Explosion_5.png" id="5_kwbx2"]
+[ext_resource type="Texture2D" uid="uid://cjwalnl0bc2v6" path="res://SueloMuerte/Explosion_6.png" id="6_5jtv4"]
+[ext_resource type="Script" uid="uid://cibcbletvymgr" path="res://suelo_muerte_2d.gd" id="7_85wst"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmrea"]
+atlas = ExtResource("1_b8bj1")
+region = Rect2(0, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkw7x"]
+atlas = ExtResource("2_85wst")
+region = Rect2(0, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbt2t"]
+atlas = ExtResource("3_k3wyg")
+region = Rect2(0, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vr2g6"]
+atlas = ExtResource("4_rac6j")
+region = Rect2(0, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vw00v"]
+atlas = ExtResource("5_kwbx2")
+region = Rect2(0, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqg7g"]
+atlas = ExtResource("6_5jtv4")
+region = Rect2(0, 0, 400, 400)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vc3wn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmrea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkw7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lbt2t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vr2g6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vw00v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqg7g")
+}],
+"loop": 1,
+"name": &"fuego",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vc3wn"]
+size = Vector2(69, 79)
+
+[node name="SueloMuerte" type="Node2D" unique_id=1405703992]
+
+[node name="SueloMuerte2D" type="AnimatedSprite2D" parent="." unique_id=558621228]
+position = Vector2(-12.000001, 1.9999981)
+scale = Vector2(0.20499998, 0.38125002)
+sprite_frames = SubResource("SpriteFrames_vc3wn")
+animation = &"fuego"
+script = ExtResource("7_85wst")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=415156053]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=684620266]
+position = Vector2(-12.5, 37.5)
+shape = SubResource("RectangleShape2D_vc3wn")
+
+[connection signal="body_entered" from="Area2D" to="SueloMuerte2D" method="_on_area_2d_body_entered"]
