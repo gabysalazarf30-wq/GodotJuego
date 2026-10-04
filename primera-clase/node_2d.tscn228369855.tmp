@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://cp3xm7e71ys5l"]
+
+[ext_resource type="Texture2D" uid="uid://ehsmcocy6eep" path="res://icon.svg" id="2_0hol4"]
+[ext_resource type="Script" uid="uid://dbg6ty7th7d0c" path="res://character_body_2d.gd" id="3_q6r6c"]
+
+[sub_resource type="GDScript" id="GDScript_0e48y"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lfkbx"]
+size = Vector2(89.33333, 20)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aui74"]
+
+[node name="Node2D" type="Node2D" unique_id=1585675994]
+script = SubResource("GDScript_0e48y")
+
+[node name="suelo" type="StaticBody2D" parent="." unique_id=485661396]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="suelo" unique_id=1956310956]
+position = Vector2(1.0000038, 0)
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_lfkbx")
+
+[node name="Sprite2D" type="Sprite2D" parent="suelo/CollisionShape2D" unique_id=45782500]
+position = Vector2(-0.3333346, 0)
+scale = Vector2(0.6402418, 0.15099387)
+texture = ExtResource("2_0hol4")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1950616970]
+position = Vector2(-1, -38)
+script = ExtResource("3_q6r6c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1234498149]
+position = Vector2(1, -28)
+shape = SubResource("CapsuleShape2D_aui74")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D/CollisionShape2D" unique_id=2037980759]
+position = Vector2(2.3841858e-07, -3.0994413e-06)
+scale = Vector2(0.140625, 0.23437504)
+texture = ExtResource("2_0hol4")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1984303326]
